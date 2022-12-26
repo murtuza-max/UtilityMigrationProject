@@ -34,7 +34,7 @@ namespace Utility
                     int n1 = Convert.ToInt32(reader[1]);
                     int n2 = Convert.ToInt32(reader[2]);
                     sourceData[id] = (n1, n2);
-                    Console.WriteLine($"ID : {id} Data ");
+                   
                 }
           
             }, DataMigration.cancellationToken);
