@@ -16,9 +16,7 @@ namespace Utility
             cancellationToken = tokenSource.Token;
             completed = false;
             iterator = UserData.startindex - 1;
-            Console.WriteLine($"sTARTiNDEX : {UserData.startindex}");
-            Console.WriteLine($"eNDiNDEX : {UserData.endindex}");
-
+           
             Migration();
         
             while (true)
@@ -50,11 +48,7 @@ namespace Utility
 
             while (range > 0)
             {
-                Console.WriteLine("-----------------------------------");
-                Console.WriteLine($"    range : {range}");
-                Console.WriteLine($"    iterator : {iterator}");
-
-                await BatchOperation.ExecuteBatch(datasource);  
+                 await BatchOperation.ExecuteBatch(datasource);  
             }
             Console.WriteLine($"Migration completed!! Press Enter to show Details");
             completed = true;
