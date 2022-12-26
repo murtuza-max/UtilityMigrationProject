@@ -26,11 +26,11 @@ namespace Utility
                 SumDataTable.Columns.Add(new DataColumn("SourceID", typeof(Int32)));
                 SumDataTable.Columns.Add(new DataColumn("Sum", typeof(Int32)));
 
-                // int cnt=0;
+            
                 var d2 =  d1.Skip(DataMigration.iterator).Take(100);
                 foreach (var row in d2)
                 {
-                   // cnt++;
+                   
                     int id = row.Key;
                     int n1 = row.Value.Item1;
                     int n2 = row.Value.Item2;
@@ -38,12 +38,8 @@ namespace Utility
                     dr["SourceID"] = id;
                     dr["Sum"] = n1 + n2;
                     SumDataTable.Rows.Add(dr);
-                    //if(cnt == 100)
-                    //{
-                    //    break;
-                    //}
                 }
-                Console.WriteLine($"Datatable rows count{SumDataTable.Rows.Count}");
+              
             
                 SqlBulkCopy objbulk = new SqlBulkCopy(InsertData);
                
@@ -56,7 +52,7 @@ namespace Utility
                     await objbulk.WriteToServerAsync(SumDataTable);
                     DataMigration.iterator += SumDataTable.Rows.Count;
                     DataMigration.range -= SumDataTable.Rows.Count;
-                    Console.WriteLine($"Table Row Count : {SumDataTable.Rows.Count}");
+                   
                     Console.WriteLine("----------------------------------------------------------------------------");
                     Console.WriteLine($"    {DataMigration.iterator} data batch is inserted into DestinationTable");
                     Console.WriteLine("----------------------------------------------------------------------------");
